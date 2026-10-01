@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFF8E8">
+  <title>Primer cumpleaños de Jorge Emilio</title>
+  <style>
+    :root {
+      --fondo: #fff8e8;
+      --tarjeta: #fffef8;
+      --texto: #493f35;
+      --azul: #1457a6;
+      --azul-claro: #1686b8;
+      --rojo: #e32636;
+      --amarillo: #f5c928;
+      --naranja: #f07822;
+      --verde: #249447;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 28px 14px;
+      display: grid;
+      place-items: center;
+      color: var(--texto);
+      font-family: Arial, sans-serif;
+      background-color: white;
+      background-image: none;
+    }
+
+    .invitacion {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      width: min(100%, 680px);
+      padding: 38px 26px;
+      text-align: center;
+      background-color: var(--tarjeta);
+      background-image: url("fondo-invitacion.jpg");
+      background-repeat: repeat;
+      background-size: 368px 368px;
+      border: 5px solid white;
+      border-radius: 28px;
+      box-shadow: 0 12px 35px #493f3529;
+    }
+
+    .invitacion::before,
+    .invitacion::after {
+      position: absolute;
+      z-index: -1;
+      width: 110px;
+      height: 90px;
+      content: "";
+      background-image:
+        radial-gradient(circle, var(--rojo) 0 5px, transparent 6px),
+        radial-gradient(circle, var(--amarillo) 0 5px, transparent 6px),
+        radial-gradient(circle, var(--verde) 0 5px, transparent 6px),
+        radial-gradient(circle, var(--azul-claro) 0 5px, transparent 6px),
+        radial-gradient(circle, var(--naranja) 0 5px, transparent 6px);
+      background-position: 10px 12px, 48px 28px, 84px 8px, 29px 67px, 99px 73px;
+      background-repeat: no-repeat;
+    }
+
+    .invitacion::before { top: 0; left: 0; }
+    .invitacion::after { right: 0; bottom: 0; transform: rotate(180deg); }
+
+    .guirnalda {
+      margin: -38px -26px 22px;
+      padding: 12px 8px;
+      color: white;
+      background: linear-gradient(90deg,
+        var(--rojo) 0 20%,
+        var(--azul-claro) 20% 40%,
+        var(--amarillo) 40% 60%,
+        var(--verde) 60% 80%,
+        var(--naranja) 80% 100%);
+      font-size: 22px;
+      letter-spacing: 8px;
+    }
+
+    .encabezado,
+    h2,
+    .mensaje,
+    .aviso {
+      display: table;
+      width: fit-content;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px 16px;
+      background: #fff1c7;
+      border: 2px dashed var(--naranja);
+      border-radius: 18px;
+    }
+
+    .encabezado { color: var(--rojo); font-weight: bold; }
+
+    .nombre-fiesta {
+      position: relative;
+      display: inline-block;
+      margin: 35px 0 8px;
+      padding: 0 10px;
+      font-family: "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+      font-size: clamp(2.1rem, 9vw, 3.7rem);
+      font-weight: 1000;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      white-space: nowrap;
+      -webkit-text-stroke: 7px white;
+      paint-order: stroke fill;
+      text-shadow: 2px 2px 0 white, -2px -2px 0 white,
+                   2px -2px 0 white, -2px 2px 0 white;
+      filter: drop-shadow(0 3px 1px #493f3540);
+    }
+
+    .nombre-fiesta span { display: inline-block; }
+    .nombre-fiesta span:nth-child(6n + 1) { color: #ed174c; }
+    .nombre-fiesta span:nth-child(6n + 2) { color: #08aeb0; }
+    .nombre-fiesta span:nth-child(6n + 3) { color: #f4c928; }
+    .nombre-fiesta span:nth-child(6n + 4) { color: #1c62a7; }
+    .nombre-fiesta span:nth-child(6n + 5) { color: #ed4a28; }
+    .nombre-fiesta span:nth-child(6n) { color: #168b49; }
+    .nombre-fiesta .espacio { width: .22em; }
+
+    .marco-nombre {
+      width: fit-content;
+      max-width: 100%;
+      margin: 18px auto;
+      padding: 12px 18px;
+      background: #fff1c7;
+      border: 2px dashed var(--naranja);
+      border-radius: 18px;
+    }
+
+    .marco-nombre .nombre-fiesta { margin: 4px 0 10px; }
+    .marco-nombre .subtitulo-fiesta { margin: 0; }
+
+    .subtitulo-fiesta {
+      color: #e32636;
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: clamp(2rem, 7vw, 2.8rem);
+      font-style: italic;
+      font-weight: bold;
+      line-height: 1;
+      transform: rotate(-3deg);
+    }
+
+    .encabezado,
+    .subtitulo-fiesta,
+    h2,
+    .mensaje,
+    .aviso,
+    .dato {
+      text-shadow:
+        -1px -1px 0 white,
+         1px -1px 0 white,
+        -1px  1px 0 white,
+         1px  1px 0 white,
+         0 0 4px white;
+    }
+
+    h2 { margin: 30px 0 12px; color: var(--azul); }
+
+    .celebracion {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 18px auto;
+    }
+
+    .gif-jorgito {
+      display: block;
+      flex: 0 1 260px;
+      width: min(42vw, 260px);
+      aspect-ratio: 1;
+      object-fit: cover;
+      border: 4px solid var(--azul-claro);
+      border-radius: 22px;
+      background: white;
+      box-shadow: 0 5px 0 #1686b833;
+    }
+
+    .numero {
+      flex: 0 0 auto;
+      color: var(--rojo);
+      font-size: clamp(78px, 15vw, 110px);
+      font-weight: bold;
+      line-height: 1;
+      text-shadow: 3px 3px 0 var(--amarillo);
+    }
+
+    .mensaje { font-size: 18px; line-height: 1.6; }
+
+    .datos {
+      margin: 24px 0;
+      padding: 14px 18px;
+      background: #fff1c7;
+      border: 2px dashed var(--naranja);
+      border-radius: 18px;
+    }
+
+    .dato {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .bolita {
+      flex: 0 0 15px;
+      width: 15px;
+      height: 15px;
+      border: 2px solid white;
+      border-radius: 50%;
+      background: var(--rojo);
+      box-shadow: 0 1px 4px #493f3540;
+    }
+
+    .dato:nth-child(2) .bolita { background: var(--azul-claro); }
+    .dato:nth-child(3) .bolita { background: var(--verde); }
+
+    .video-llegada {
+      width: 100%;
+      max-width: 540px;
+      margin: 14px auto;
+      border: 4px solid var(--azul-claro);
+      border-radius: 18px;
+    }
+
+    .aviso { color: #756b79; font-size: 14px; line-height: 1.5; }
+    .despedida { color: var(--azul); }
+
+    .boton {
+      display: inline-block;
+      margin: 12px 0;
+      padding: 14px 24px;
+      color: white;
+      background: var(--verde);
+      border: 3px solid white;
+      border-radius: 30px;
+      box-shadow: 0 4px 0 #176b31;
+      font-weight: bold;
+      text-decoration: none;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .boton-musica {
+      margin: 0 auto 18px;
+      color: white;
+      background: linear-gradient(90deg,
+        var(--rojo) 0 20%,
+        var(--azul-claro) 20% 40%,
+        var(--amarillo) 40% 60%,
+        var(--verde) 60% 80%,
+        var(--naranja) 80% 100%);
+      border-color: white;
+    }
+
+    .boton:hover { transform: translateY(1px); opacity: .9; }
+
+    @media (max-width: 480px) {
+      .invitacion { padding: 32px 17px; }
+      .guirnalda { margin: -32px -17px 20px; font-size: 18px; letter-spacing: 5px; }
+      .celebracion { gap: 10px; }
+      .gif-jorgito { flex-basis: 185px; width: 42vw; }
+    }
+  </style>
+</head>
+<body>
+  <main class="invitacion">
+    <button id="boton-musica" class="boton boton-musica" type="button">
+      🎵 Reproducir música
+    </button>
+
+    <div class="guirnalda" aria-hidden="true">★ ● ★ ● ★</div>
+
+    <p class="encabezado">🎈 ¡Estás invitado! 🎈</p>
+
+    <div class="marco-nombre">
+      <h1 class="nombre-fiesta" aria-label="Jorge Emilio">
+        <span>J</span><span>o</span><span>r</span><span>g</span><span>e</span>
+        <span class="espacio" aria-hidden="true"></span>
+        <span>E</span><span>m</span><span>i</span><span>l</span><span>i</span><span>o</span>
+      </h1>
+      <p class="subtitulo-fiesta">Turns 1</p>
+    </div>
+
+    <div class="celebracion" aria-label="Jorge Emilio celebra su primer año">
+      <img
+        class="gif-jorgito"
+        src="jorgito-video.gif"
+        alt="Jorge Emilio con un sombrero de fiesta">
+    </div>
+
+    <p class="mensaje">
+      Hace un añito llegó a nuestras vidas nuestro pequeño
+      <strong>Jorge Emilio</strong>.
+      , y queremos celebrar su primer añito rodeados de las personas que queremos, sería un honor que nos acompañaran a compartir este día tan especial con nosotros.
+    </p>
+
+    <section class="datos" aria-label="Datos de la fiesta">
+      <p class="dato"><span class="bolita" aria-hidden="true"></span><span><strong>📅 Fecha:</strong> 10 de octubre</span></p>
+      <p class="dato"><span class="bolita" aria-hidden="true"></span><span><strong>🕒 Hora:</strong> 2:00 PM</span></p>
+      <p class="dato"><span class="bolita" aria-hidden="true"></span><span><strong>📍 Lugar:</strong> El rancho de mi tío </span></p>
+      <p class="dato"><span class="bolita" aria-hidden="true"></span><span><strong>👕 Talla:</strong> 2T / 24 meses</span></p>
+      <p class="dato"><span class="bolita" aria-hidden="true"></span><span><strong>👟 Zapato:</strong> 12 cm</span></p>
+    </section>
+
+    <a
+      class="boton"
+      href="https://maps.app.goo.gl/f4bRbQwZyJu47cXG6"
+      rel="noopener noreferrer"
+      aria-label="Abrir la ubicación de la fiesta en Google Maps">
+      📍 Ver ubicación en Google Maps
+    </a>
+
+    <h2>⭐ ¿Cómo llegar? ⭐</h2>
+
+    <video class="video-llegada" controls playsinline preload="metadata">
+      <source src="video-llegada.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+
+    <p class="mensaje despedida">
+      Esperamos contar con ustedes para compartir juntos esta fecha tan especial. 💙
+      <br>
+      <strong>¡Te esperamos, no faltes!🥳</strong>
+    </p>
+
+    <h2>🎉 Confirma tu asistencia 🎉</h2>
+    <p class="aviso">Pulsa el botón para confirmar por WhatsApp:</p>
+
+    <a
+      class="boton"
+      href="https://wa.me/526463417182?text=Hello%2C%20confirmo%20mi%20asistencia%20al%20fieston%20de%20Jorgito%20Emilio%20%F0%9F%A4%98%F0%9F%8F%BD"
+      target="_blank"
+      rel="noopener noreferrer">
+      Confirmar por WhatsApp
+    </a>
+  </main>
+
+  <audio id="musica" src="musica.mp3" loop></audio>
+
+  <script>
+    const musica = document.getElementById("musica");
+    const botonMusica = document.getElementById("boton-musica");
+
+    botonMusica.addEventListener("click", async () => {
+      if (musica.paused) {
+        try {
+          await musica.play();
+          botonMusica.textContent = "⏸️ Pausar música";
+        } catch {
+          botonMusica.textContent = "No se pudo reproducir la música";
+        }
+      } else {
+        musica.pause();
+        botonMusica.textContent = "🎵 Reproducir música";
+      }
+    });
+  </script>
+</body>
+</html>
